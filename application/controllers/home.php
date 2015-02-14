@@ -2,9 +2,13 @@
 
 class Home extends CI_Controller {
 
+
 	public function index()
 	{
-		//$this->load->view('welcome_message');
-		echo 'that is home';
+		$this->load->model('home_model');
+		$data['products'] = $this->home_model->retrieve_products(); 
+		$data['content'] = 'cart/products';
+		//var_dump($data);
+		$this->load->view('home', $data); 
 	}
 }
