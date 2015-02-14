@@ -9,6 +9,7 @@ class User extends CI_Controller {
 	public function index()
 	{
 		echo 'login';
+		$this->load->view('user/login');
 	}
 	public function login(){
 		$this->load->helper(array('form'));
@@ -17,13 +18,12 @@ class User extends CI_Controller {
 	public function verify_login(){
 		   //This method will have the credentials validation
 		   $this->load->library('form_validation'); 
-		   $this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean');
+		   $this->form_validation->set_rules('email', 'Email', 'required');
 		   $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean|callback_check_database');
 		 
 		   if($this->form_validation->run() == FALSE)
 		   {
-		     //Field validation failed.  User redirected to login page
-		     $this->load->view('user/login');
+		    $this->load->view('user/login');
 		   }
 		   else
 		   {
@@ -34,9 +34,9 @@ class User extends CI_Controller {
 	}
 	function check_database($password)
 	 {
-	   //Field validation succeeded.  Validate against database
+	   
 	   $username = $this->input->post('username'); 
-	   //query the database
+	   
 	   $result = $this->user_model->login($username, $password);
 	 
 	   if($result)
@@ -46,7 +46,7 @@ class User extends CI_Controller {
 	     {
 	       $sess_array = array(
 	         'id' => $row->id,
-	         'username' => $row->username
+	         'email' => $row->email
 	       );
 	       $this->session->set_userdata('logged_in', $sess_array);
 	     }
@@ -62,7 +62,7 @@ class User extends CI_Controller {
 	{
 	   $this->session->unset_userdata('logged_in');
 	   session_destroy();
-	   //redirect('home', 'refresh');
+	   redirect('index.php/home', 'refresh');
 	   var_dump($this->session->userdata('logged_in'));
 	 }
 }
