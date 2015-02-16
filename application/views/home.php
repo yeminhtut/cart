@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>CodeIgniter Shopping Cart</title>
- 
+<link href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" /> 
 <link href="<?php echo base_url(); ?>assets/css/core.css" media="screen" rel="stylesheet" type="text/css" />
  
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.min.js"></script>
