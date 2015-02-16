@@ -9,14 +9,15 @@ class User extends CI_Controller {
 	public function index()
 	{
 		echo 'login';
-		$this->load->view('user/login');
+		//$this->load->view('user/login');
+		$data['content'] = 'user/login';		
+		$this->load->view('layout', $data); 
 	}
 	public function login(){
 		$this->load->helper(array('form'));
    		$this->load->view('user/login');
 	}
 	public function verify_login(){
-		   //This method will have the credentials validation
 		   $this->load->library('form_validation'); 
 		   $this->form_validation->set_rules('email', 'Email', 'required');
 		   $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean|callback_check_database');
@@ -27,9 +28,9 @@ class User extends CI_Controller {
 		   }
 		   else
 		   {
-		     //redirect('home', 'refresh');
+		    redirect('/', 'refresh');
 		   	echo 'go to private area';
-		   	var_dump($this->session->userdata('logged_in'));
+		   	
 		   }
 	}
 	function check_database($password)

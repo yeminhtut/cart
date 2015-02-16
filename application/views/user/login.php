@@ -1,8 +1,4 @@
-<html xmlns="http://www.w3.org/1999/xhtml">
- <head>
-   <title>Simple Login with CodeIgniter</title>
- </head>
- <body>
+
    <h1>Login</h1>
    <?php echo validation_errors(); ?>
    <?php echo form_open('index.php/user/verify_login'); ?>
@@ -14,5 +10,3 @@
      <br/>
      <input type="submit" value="Login"/>
    </form>
- </body>
-</html>

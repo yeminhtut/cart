@@ -8,7 +8,7 @@ $(document).ready(function() {
 		$('#checkout').click(function(){
 			  $.ajax({
 			    type:"POST",
-			    url:"http://localhost/cart/index.php/home/checkout",
+			    url:"http://localhost:8888/cart/index.php/home/checkout",
 			    data: {source:"magazine"},
 			    dataType:"html",
 			    success:function(data){      
@@ -20,3 +20,7 @@ $(document).ready(function() {
 			  });
 		});
 });
+
+function openLogin(){
+	console.log('login box open');
+}

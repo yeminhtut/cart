@@ -5,10 +5,17 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->model('home_model');
+		
+		if($this->session->userdata('logged_in'))
+	   {
+	     $session_data = $this->session->userdata('logged_in');
+	     $data['user_email'] = $session_data['email'];
+	     //$this->load->view('home_view', $data);
+	   }
+	 	$this->load->model('home_model');
 		$data['products'] = $this->home_model->retrieve_products(); 
 		$data['content'] = 'cart/products';		
-		$this->load->view('home', $data); 
+		$this->load->view('layout', $data); 
 	}
 	public function checkout()
 	{
@@ -21,6 +28,9 @@ class Home extends CI_Controller {
 		// $this->email->send();
 
 		// echo $this->email->print_debugger();
+		 $this->load->helper('email');
+	    //load email library
+	    $this->load->library('email');
 		echo 'y';
 	}
 }
