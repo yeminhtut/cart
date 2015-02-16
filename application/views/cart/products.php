@@ -1,3 +1,4 @@
+<p class="bg-info success_msg">Successfully checkout</p>
 <ul class="products">
     <?php foreach($products as $p): ?>
     <li>
@@ -16,4 +17,4 @@
     <?php endforeach;?>
 </ul>
 <h3>Total:<span id="total"></span></h3>
-<button type="button" class="btn btn-success">Checkout</button>
+<button type="button" class="btn btn-success" id="checkout">Checkout</button>
