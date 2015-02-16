@@ -13,7 +13,8 @@ $(document).ready(function() {
 			    dataType:"html",
 			    success:function(data){      
 			      if(data=='y'){
-			      	
+			      	//$('#checkout').css('display','block');
+			      	$( '.success_msg' ).css( "display", "block" );
 			      }
 			    }
 			  });
